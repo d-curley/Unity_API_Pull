@@ -7,7 +7,8 @@ using SimpleJSON;
 
 public class APIController : MonoBehaviour
 {
-    private readonly string baseURL = "https://api.particle.io/v1/devices/20001e001447393035313136/Analog_Value1?access_token=f68d090ee21d7da181565c0fde00cf0f2e8594c5";
+    public string baseURL = "https://api.particle.io/v1/devices/20001e001447393035313136/Analog_Value1?access_token=f68d090ee21d7da181565c0fde00cf0f2e8594c5";
+    public InputField inputURL;
     public Text text;
     float lastTime=0f;
     float loopTime;
@@ -21,10 +22,11 @@ public class APIController : MonoBehaviour
     // Update is called once per frame
     IEnumerator GetValue()
     {
-        Debug.Log("getting value");
+        
         while (true)
         {
-         //Initialize Web request
+            Debug.Log(inputURL.text);
+            //Initialize Web request
             UnityWebRequest InfoRequest = UnityWebRequest.Get(baseURL);
             yield return InfoRequest.SendWebRequest(); 
 
